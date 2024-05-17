@@ -4,8 +4,8 @@ import pandas as pd
 df = pd.read_csv('vendas.csv',delimiter=';')
 
 # Limpar os valores monetários e converter para números
-df['Valor Unitário'] = df['Valor Unitário'].str.replace('R$', '').str.replace(',', '').astype(float)
-df['Valor Final'] = df['Valor Final'].str.replace('R$', '').str.replace(',', '').astype(float)
+df['Valor Unitário'] = df['Valor Unitário'].str.replace('R$', '').str.replace('.', '').str.replace(',', '.').astype(float)
+df['Valor Final'] = df['Valor Final'].str.replace('R$', '').str.replace('.', '').str.replace(',', '.').astype(float)
 
 # Faturamento de cada loja
 faturamento_por_loja = df.groupby('ID Loja')['Valor Final'].sum()
